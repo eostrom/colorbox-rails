@@ -9,16 +9,29 @@
 //= require_tree .
 
 $(document).ready(function() {
-    $('a[data-colorbox="true"]').live('click', function(e) {
+    $('a[data-colorbox="live"]').live('click', function(e) {
         e.preventDefault();
-
+        $link = $(this);
         $.colorbox(
             { 
-                height: $(this).data("colorbox-height") || false,
-                width: $(this).data("colorbox-width") || false,
-                iframe: $(this).data("colorbox-iframe") || false,
-                href: $(this).attr('href'),
+                height: $link.data("colorbox-height") || false,
+                width: $link.data("colorbox-width") || false,
+                iframe: $link.data("colorbox-iframe") || false,
+                href: $link.attr('href'),
                 opacity: 0.5
             });
     });
+
+    $('a[data-colorbox="true"]').each(function() {
+        $link = $(this);
+        $link.colorbox(
+            { 
+                height: $link.data("colorbox-height") || false,
+                width: $link.data("colorbox-width") || false,
+                iframe: $link.data("colorbox-iframe") || false,
+                href: $link.attr('href'),
+                opacity: 0.5
+            });
+    });
+    
 });

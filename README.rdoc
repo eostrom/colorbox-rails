@@ -13,14 +13,18 @@ in your application.js
 <tt>//= require colorbox-rails</tt>
 
 
-Then enable link to be displayed in colorbox by simply adding :colorbox => true attribute. E.g.
+Then enable links to be controlled by colorbox by simply adding a :colorbox => 'true' data attribute to the link. E.g.:
+<tt><%= link_to "My superb link", "#", :data => { :colorbox => 'true' } %></tt>
 
-<tt><%= link_to "My superb link", "#", :data => { :colorbox => true } %></tt>
+Outputs the HTML:
+<tt><a href="#" data-colorbox="true">My superb link</a></tt>
 
-<a href="#" data-colorbox="true">My superb link</a>
-
-Add attributes inside the :data block
-
+Add attributes inside the :data block:
 <tt><%= link_to "My superb link", "#", :data => { :colorbox => true, :colorbox_height => '300px', :colorbox_width => '300px', :colorbox_iframe => true } %></tt>
+
+If you are adding links dynamically with Javascript, and want them to be colorbox'd, use :colorbox => 'live':
+<tt><%= link_to "My superb link", "#", :data => { :colorbox => 'live' } %></tt>
+
+Note that the "live" method does not allow for grouping (rel="photo_group").
 
 This project rocks and uses MIT-LICENSE.
